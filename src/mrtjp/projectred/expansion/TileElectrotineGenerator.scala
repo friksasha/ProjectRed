@@ -143,10 +143,10 @@ class TileElectrotineGenerator extends TPoweredMachine with TGuiMachine with TIn
                 storage += 1
                 burnTimeRemaining -= getBurnUseOnCharge
             }
-            else
+/*            else
             {
                 burnTimeRemaining -= getBurnUseOnIdle
-            }
+            }*/
         }
     }
 
