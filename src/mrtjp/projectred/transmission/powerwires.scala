@@ -95,7 +95,7 @@ trait TLowLoadPowerLineCommons extends TPowerWireCommons with ILowLoadPowerLine
     val cond = new PowerConductor(this, idRange)
     {
         override def capacitance = 8.0D
-        override def resistance = 0.01D
+        override def resistance = 0.0D
         override def scaleOfInductance = 0.07D
         override def scaleOfParallelFlow = 0.5D
     }

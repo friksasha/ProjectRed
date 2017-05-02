@@ -25,7 +25,7 @@ object ProjectRedExpansion
     var enchantmentFuelEfficiency:EnchantmentFuelEfficiency = null
 
     /** Parts **/
-    var itemSolar:ItemSolarPanel = null
+//    var itemSolar:ItemSolarPanel = null
 
     val tabExpansion = new CreativeTabs("expansion")
     {

@@ -30,10 +30,11 @@ class ExpansionProxy_server extends IProxy with IPartFactory2
 
     def init()
     {
-        MultiPartRegistry.registerParts(this, Array("pr_solar"))
+        //MultiPartRegistry.registerParts(this, Array("pr_solar"))
+//		MultiPartRegistry.registerParts(this, Array(SolarPanelPart.typeID))
 
         //Parts
-        itemSolar = new ItemSolarPanel
+//        itemSolar = new ItemSolarPanel
 
         //Items
         itemEmptybattery = new ItemBatteryEmpty
@@ -47,6 +48,7 @@ class ExpansionProxy_server extends IProxy with IPartFactory2
         machine1 = new BlockMachine("projectred.expansion.machine1")
         machine1.addTile(classOf[TileInductiveFurnace], 0)
         machine1.addTile(classOf[TileElectrotineGenerator], 1)
+		machine1.addTile(classOf[TileSolarPanel], 2)
 
         //Machine2 (devices)
         machine2 = new BlockMachine("projectred.expansion.machine2")
@@ -86,7 +88,9 @@ class ExpansionProxy_server extends IProxy with IPartFactory2
 
     def createPart(name:String):TMultiPart = name match
     {
-        case "pr_solar" => new SolarPanelPart
+        //case "pr_solar" => new SolarPanelPart
+//		case SolarPanelPart.typeID => new SolarPanelPart
+		case _ => null
     }
 }
 
@@ -121,6 +125,7 @@ class ExpansionProxy_client extends ExpansionProxy_server
         super.postinit()
         TileRenderRegistry.setRenderer(machine1, 0, RenderInductiveFurnace)
         TileRenderRegistry.setRenderer(machine1, 1, RenderElectrotineGenerator)
+        TileRenderRegistry.setRenderer(machine1, 2, RenderSolarPanel)
         TileRenderRegistry.setRenderer(machine2, 0, RenderBlockBreaker)
         TileRenderRegistry.setRenderer(machine2, 1, RenderItemImporter)
         TileRenderRegistry.setRenderer(machine2, 2, RenderBlockPlacer)
@@ -136,7 +141,7 @@ class ExpansionProxy_client extends ExpansionProxy_server
         TileRenderRegistry.setRenderer(machine2, 12, RenderDiamondBlockBreaker)
 
         MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(machine2), RenderBatteryBox)
-        MinecraftForgeClient.registerItemRenderer(itemSolar, RenderSolarPanel)
+//        MinecraftForgeClient.registerItemRenderer(itemSolar, RenderSolarPanel)
 
         GuiHandler.register(GuiInductiveFurnace, furnaceGui)
         GuiHandler.register(GuiBlockPlacer, blockPlacerGui)
@@ -200,13 +205,13 @@ object ExpansionRecipes
         ))
 
         //Jetpack
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(itemJetpack),
+/*        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(itemJetpack),
             "b b","bcb","eae",
             'b':JC, itemBattery,
             'c':JC, Items.diamond_chestplate,
             'e':JC, Items.emerald,
             'a':JC, new ItemStack(machine2, 1, 5)
-        ))
+        )) */
 
         //Recipe Plan
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(itemPlan), "dyeBlue", Items.paper))
@@ -229,6 +234,15 @@ object ExpansionRecipes
             'a':JC, new ItemStack(itemBattery),
             'c':JC, Blocks.clay,
             'e':JC, "ingotElectrotineAlloy"
+        ))
+		       
+		//Solar Panel
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(machine1, 1, 2),
+            "sss","iwi","wew",
+            's':JC, PartDefs.ELECTROSILICON.makeStack,
+            'i':JC, "ingotIron",
+            'e':JC, "ingotElectrotineAlloy",
+            'w':JC, "slabWood"
         ))
     }
 
@@ -289,15 +303,6 @@ object ExpansionRecipes
             'w':JC, "plankWood",
             'i':JC, "ingotIron",
             'e':JC, "ingotElectrotineAlloy"
-        ))
-
-        //Solar Panel
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(itemSolar),
-            "sss","iwi","wew",
-            's':JC, PartDefs.ELECTROSILICON.makeStack,
-            'i':JC, "ingotIron",
-            'e':JC, "ingotElectrotineAlloy",
-            'w':JC, "slabWood"
         ))
 
         //Charging Bench

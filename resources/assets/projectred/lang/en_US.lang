@@ -84,6 +84,7 @@ item.projectred.expansion.infused_ender_pearl.name=Infused Ender Pearl
 item.projectred.expansion.plan.name=Recipe Plan
 tile.projectred.expansion.machine1|0.name=Inductive Furnace
 tile.projectred.expansion.machine1|1.name=Electrotine Generator
+tile.projectred.expansion.machine1|2.name=Solar Panel
 tile.projectred.expansion.machine2|0.name=Block Breaker
 tile.projectred.expansion.machine2|1.name=Item Importer
 tile.projectred.expansion.machine2|2.name=Block Placer
@@ -97,7 +98,7 @@ tile.projectred.expansion.machine2|9.name=Frame Linear Actuator
 tile.projectred.expansion.machine2|10.name=Project Bench
 tile.projectred.expansion.machine2|11.name=Auto Crafting Bench
 tile.projectred.expansion.machine2|12.name=Diamond Block Breaker
-item.projectred.expansion.solar_panel.name=Solar Panel
+
 enchantment.projectred.expansion.fuel_efficiency=Fuel Efficiency
 
 

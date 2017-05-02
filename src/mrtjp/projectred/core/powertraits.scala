@@ -62,7 +62,7 @@ class PowerConductor(val parent:IPowerConnectable, ids:Seq[Int])
     var time = 0
 
     def capacitance = 0.0D
-    def resistance = 0.01D
+    def resistance = 0.0D
     def scaleOfInductance = 0.07D
     def scaleOfParallelFlow = 0.5D
 
@@ -80,6 +80,8 @@ class PowerConductor(val parent:IPowerConnectable, ids:Seq[Int])
             Iloc = 0.5D*Iflow
             Iflow = 0.0D
             Vloc += 0.05D*Vflow*capacitance
+			Vloc = math.abs(Vloc)
+			if (Vloc > 120) {Vloc = 120}
             Vflow = 0.0D
         }
         Vloc
